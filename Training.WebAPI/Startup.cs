@@ -51,7 +51,8 @@ namespace Training.WebAPI
             services.AddSingleton<IReservationRepository, ReservationRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
 
-            services.AddTransient<RequestCultureMiddleware>();
+            services.AddScoped<RequestCultureMiddleware>();
+            services.AddScoped<RequestUserMiddleware>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,7 +69,10 @@ namespace Training.WebAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            // El orden define en que orden se irán ejecutando los middleware
             app.UseMiddleware<RequestCultureMiddleware>();
+            app.UseMiddleware<RequestUserMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
