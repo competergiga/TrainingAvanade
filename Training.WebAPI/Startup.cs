@@ -38,6 +38,7 @@ namespace Training.WebAPI
             services.AddTransient<ICustomDateTimeProvider, CustomDateTimeProvider>();
             services.AddTransient<IBookService, BookService>();
             services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<IUsersRepository, UsersRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
