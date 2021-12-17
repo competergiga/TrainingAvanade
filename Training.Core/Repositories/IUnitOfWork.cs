@@ -6,6 +6,8 @@
         IBookRepository BookRepository { get; }
         IReservationRepository ReservationRepository { get; }
 
+        IAlbumRepository AlbumRepository { get; }
+
         bool CommitTransaction();
     }
 }
